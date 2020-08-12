@@ -24,7 +24,7 @@ Ruby on Rails, ServerlessFramework, Nuxt.js
 **MALK DESIGN**  
 *2017/10 ~ 2018/08*  
 Ruby on RailsでのAPI開発  
-Vue.jsでのフロントエンド開発
+Vue.jsでのフロントエンド開発  
 React.jsでのフロントエンド開発
 
 **ALIS Co., Ltd.**  
@@ -32,6 +32,7 @@ React.jsでのフロントエンド開発
 CKEditorを利用したエディタ開発  
 ServerlessFrameWorkを利用した開発  
 Nuxt.jsを利用したフロントエンド開発  
+プライベートチェーンを利用したトークンによる記事売買機能
 
 **NOIN, INC.**  
 *2019/07 ~ Now*   
