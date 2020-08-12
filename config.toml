@@ -12,6 +12,7 @@ title = "ALL FREE"
 author = "Reishi Narisada"
 description = "It's my technical memo."
 profilePicture = "images/profile.jpg"
+images = ["images/profile.jpg"]
 mainSections = ["post"]
 
 [menu]
