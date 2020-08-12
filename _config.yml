@@ -1,0 +1,11 @@
+theme: jekyll-theme-cayman
+twitter:
+  username: narisada014
+defaults:
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /static/images/profil.jpg
+        height: 630
+        width: 1200
