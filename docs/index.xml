@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>https://narisada014.github.io/blog/</link>
+    <description>Recent content on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Thu, 13 Aug 2020 01:32:18 +0900</lastBuildDate>
+    
+	<atom:link href="https://narisada014.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://narisada014.github.io/blog/about/</link>
+      <pubDate>Thu, 13 Aug 2020 02:08:37 +0900</pubDate>
+      
+      <guid>https://narisada014.github.io/blog/about/</guid>
+      <description>Language 業務レベル：Ruby, Python, Javascript
+習得中：C++, Rust, Go
+FrameWork Ruby on Rails, ServerlessFramework, Nuxt.</description>
+    </item>
+    
+    <item>
+      <title>Hugo導入</title>
+      <link>https://narisada014.github.io/blog/post/introduce-hugo/</link>
+      <pubDate>Thu, 13 Aug 2020 01:32:18 +0900</pubDate>
+      
+      <guid>https://narisada014.github.io/blog/post/introduce-hugo/</guid>
+      <description>WIP&amp;hellip; </description>
+    </item>
+    
+  </channel>
+</rss>
