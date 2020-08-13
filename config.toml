@@ -6,6 +6,7 @@ summarylength = 10
 enableEmoji = true
 enableRobotsTXT = true
 publishDir = "docs"
+canonifyURLs = true
 
 [params]
 title = "ALL FREE"
