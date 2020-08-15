@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" data-theme=""><head>
-    <title> Reishi Narisada | Elasticsearch 5.6.3を7.4に上げた </title>
+    <title> Reishi Narisada | Elasticsearch 5.6.3を7.4にアップデートした </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It is theoretically possible...">
     
@@ -17,9 +17,9 @@
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://narisada014.github.io/blog/images/thumbnail.png"/>
 
-<meta name="twitter:title" content="Elasticsearch 5.6.3を7.4に上げた"/>
+<meta name="twitter:title" content="Elasticsearch 5.6.3を7.4にアップデートした"/>
 <meta name="twitter:description" content="最近検索に曖昧検索を入れたいとの声があり、ベクトル検索できるようにする必要があった。
-ベクトル検索はElasticsearchの7.3系以上からのみ利用可能であり、既存が5系だったのでメジャーバージョンアップデートを行う必要があり、色々苦労した。
+ベクトル検索はElasticsearchの7.3以上からのみ利用可能で、既存が5系だったのでメジャーバージョンアップデートを行う必要があり色々苦労したのでメモとして残しておく。
 環境 サーバサイド： Rails
 Elasticsearch：5.6.3 -&gt; 7.4.2
 インフラ： EC2のクラスタ(Ansibleで生成)"/>
@@ -103,7 +103,7 @@ Elasticsearch：5.6.3 -&gt; 7.4.2
     <div class="post-content">
 
       <div class="post-title">
-        <h3>Elasticsearch 5.6.3を7.4に上げた
+        <h3>Elasticsearch 5.6.3を7.4にアップデートした
         </h3>
         
         <div class="info">
@@ -115,7 +115,7 @@ Elasticsearch：5.6.3 -&gt; 7.4.2
         </div>
 
     <p>最近検索に曖昧検索を入れたいとの声があり、ベクトル検索できるようにする必要があった。<br>
-ベクトル検索はElasticsearchの7.3系以上からのみ利用可能であり、既存が5系だったのでメジャーバージョンアップデートを行う必要があり、色々苦労した。</p>
+ベクトル検索はElasticsearchの7.3以上からのみ利用可能で、既存が5系だったのでメジャーバージョンアップデートを行う必要があり色々苦労したのでメモとして残しておく。</p>
 <h1 id="環境">環境</h1>
 <p>サーバサイド： Rails<br>
 Elasticsearch：5.6.3 -&gt; 7.4.2<br>
@@ -127,7 +127,7 @@ Elasticsearch：5.6.3 -&gt; 7.4.2<br>
 Elasticsearchの5系から6系にアップデートされた時点で劇的な変更が&hellip;
 synonymファイルをkuromojiのアナライザのfilterに入れるとトークン化されてしまう。<br>
 つまり、「資生堂,SHISEIDO,しせいどう」などがsynonymファイルに定義されている場合、<br>
-「し,せい,どう」のように分割されてしまい、6系以上では検索時のノイズの原因になってしまう。<br>
+「し,せい,どう」のように分割されてしまい6系以上では検索時のノイズの原因になってしまう。<br>
 参考: <a href="https://qiita.com/imura81gt/items/aba56c682aea600d5f9b">https://qiita.com/imura81gt/items/aba56c682aea600d5f9b</a></p>
 </li>
 <li>
@@ -141,9 +141,9 @@ synonymファイルをkuromojiのアナライザのfilterに入れるとトー�
 <li>
 <p>辞書とsynonymは運用時に随時追加しているのでテストの構成を変えた<br>
 AWSのElasticsearchでは2020年の春まで個別でsynonymファイル、辞書ファイルを定義して、<br>
-必要な時に随時更新することができなった。そのため2017年に作成された現システムではEC2にElasticsearchをインストールし、そこにsynonymや辞書ファイルを持つことで新しい商品追加時などの辞書登録に対応している。 <br>
+必要な時に随時更新することができなかった。そのため2017年に作成された現システムではEC2にElasticsearchをインストールし、そこにsynonymや辞書ファイルを持つことで新しい商品追加時などの辞書登録に対応している。 <br>
 辞書登録のリポジトリは本体のAPIとは別で置いているため、辞書登録ごとに他の登録済みの単語などに影響が出ないかを随時テストコードを追加することで性能を担保していた。(ここは各社色々運用ありそうなので気になる。)<br>
-このテストコードがシノニム定義ワードがトークン化される事件の影響を受けて落ちまくった。</p>
+このテストコードがシノニム定義ワードがトークン化される影響を受けて落ちまくった。</p>
 </li>
 <li>
 <p>Elasticsearch7系でkuromojiのsearchモードで例外発生<br>
@@ -154,9 +154,8 @@ ver 7.9では改善される。<br>
 </li>
 <li>
 <p>既存環境との併用<br>
-いきなり7系にするのは危険。5系と併用してABテストを行い、実際に検索に新検索サーバのクラスタが悪影響を出さないかを検証しなければならず、インフラ環境を2つ用意し、<br>
-また、バックエンドのAPIはRailsで動いているので request_store というライブラリを導入してスレッドごとのローカル変数を準備し、既存クラスタか新クラスタにユーザーを振り分ける必要があった。<br>
-ABテストは<a href="https://data.gunosy.io/entry/ab_testing_assignment">グノシーのこのブログの手法</a>を利用した。設計力がやや試される部分だった<br>
+いきなり7系にするのは危険。5系と併用してABテストを行い、実際に検索に新検索サーバのクラスタが悪影響を出さないかを検証しなければならずインフラ環境を2つ用意し、バックエンドのAPIはRailsで動いているので request_store というライブラリを導入してスレッドごとのローカル変数を準備し、既存クラスタか新クラスタにユーザーを振り分ける必要があった。<br>
+ABテストは<a href="https://data.gunosy.io/entry/ab_testing_assignment">グノシーのこのブログの手法</a>を利用した。設計力がやや試される部分だった。<br>
 request_storeのリポジトリ: <a href="https://github.com/steveklabnik/request_store">https://github.com/steveklabnik/request_store</a></p>
 </li>
 <li>
@@ -169,9 +168,9 @@ ElasticsearchをEC2でクラスタ構成で利用する場合各ノードが同�
 </ol>
 <h1 id="対応の詳細">対応の詳細</h1>
 <h2 id="インフラ">~インフラ~</h2>
-<p>discovery-ec2の7系の設定。elasticsearch.ymlに定義してやる。<br>
-5系と違い、master_nodeがどれであるかを予め指定してinitしてやる必要がある。<br>
-下記構成の場合は、master_nodeは全てのノードである。コメントの注意書きは結構大事。ヤラカシの元だと思う。
+<p>discovery-ec2の7系の設定の変更を行った。elasticsearch.ymlに定義してやる。<br>
+5系と違い、master_nodeがどれであるかを予め指定してinitしてやる必要があった。<br>
+下記構成の場合はmaster_nodeは全てのノードである。
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">node.name: &#34;your host name&#34;
 cluster.name: &#34;your cluster name&#34;
 discovery.seed_providers: ec2 # es5からキー名が変更されている
@@ -185,7 +184,8 @@ cluster.initial_master_nodes: # クラスタ初期構築時にどのノードが
   - &#34;XXX.XX.XX.XX&#34;
 discovery.ec2.groups: &#34;your security group id&#34; # ノードが存在するセキュリティグループ
 discovery.ec2.availability_zones: [&#34;your zone 1&#34;, &#34;your zone 2&#34;]</code></pre></div></p>
-<p>logへの書き込み権限はとりあえず下記でOK。本質的じゃないのでスルー気味で行く。おそらくここが結構ハマりポイントな気がする。私の場合はelasticsearchが吐くログを追って権限がないことに気づいた。<br>
+<p>logへの書き込み権限はとりあえず下記でOK。本質的じゃないのでスルー気味で行く。<br>
+おそらくここが結構ハマりポイントな気がする。自分の場合はelasticsearchが吐くログを追って権限がないことに気づいた。<br>
 <strong>ログを探して読むのは大事(自戒)</strong></p>
 <pre><code>/etc/sysconfig/elasticsearch owner=root group=elasticsearch  
 /etc/elasticsearch/elasticsearch.yml owner=root group=elasticsearch
@@ -292,11 +292,11 @@ analyzer: {
       ]
   },...</code></pre></div></p>
 <p>この変更でsynonymをkeywordとしてElasticsearchのドキュメントに登録できるようになった。<br>
-コメントにも書いたように、keywordタイプを指定した場合、html_stripがうまく効かなくなるので、自前で正規表現を使用して<!-- raw HTML omitted -->のようなhtmlタグを排除する仕組みを定義した。<br>
+コメントにも書いたように、keywordタイプを指定した場合html_stripがうまく効かなくなるので、自前で正規表現を使用して<!-- raw HTML omitted -->のようなhtmlタグを排除する仕組みを定義した。<br>
 また、synonymの読み込みをkuromojiから切り離したおかげで<code>mode: search</code>が使用可能になった。(結構たまたまなので大声で叫びましたw)</p>
 <p>このようにアナライザを修正したら次はmappingの修正とクエリの修正が必要になる。<br>
-今までは一つのアナライザで全て済んでいた。しかし、2つのアナライザを利用しなければならないため、Elasticsearchのmulti_matchクエリの<code>cross_field</code>を利用する必要がある。<br>
-cross_fieldについては下記のブログに助けられた。尚、こちらの方がElasticserachのIssueにも同様の内容を記載してくださっていたので参考にさせていただきました。<br>
+今までは一つのアナライザで全て済んでいた。しかし、2つのアナライザを利用しなければならないためElasticsearchのmulti_matchクエリの<code>cross_field</code>を利用する必要がある。<br>
+cross_fieldについては下記のブログに助けられた。(尚、こちらの方がElasticserachのIssueにも同様の内容を記載してくださっていたので参考にさせていただきました。)<br>
 下記記事の通りなのでmappingもクエリについてもあまり言及しないが、multi matchクエリは以下のように使用した。<br>
 <a href="http://chie8842.hatenablog.com/entry/2019/09/29/124500">助けられたブログ</a></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{
@@ -323,18 +323,18 @@ cross_fieldについては下記のブログに助けられた。尚、こちら
 <p>　　</p>
 <h2 id="api周り">~API周り~</h2>
 <p>2のtypelessに関してはひたすらtype指定を消すことで問題ない。<br>
-5のスレッドローカル変数については、設計上各コントローラは共通の継承元のコントローラから派生しているため、その継承元にRequestStoreを利用したユーザーの振り分けロジックを記載してやった。
-RequestStoreの使用方法は以下<br>
+5のスレッドローカル変数については設計上各コントローラは共通の継承元のコントローラから派生しているため、その継承元にRequestStoreを利用したユーザーの振り分けロジックを記載した。
+RequestStoreの使用方法は以下の通り。<br>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  RequestStore.store[:hogehoge] = &#34;es7&#34;</code></pre></div>
-このように指定してやるだけで、そのユーザーのそのリクエストに限ってはグローバル変数として有効化される。一時的に5系と7系を併用するので後々消すという意味であまり意識の高い実装を行っていない。
+このように指定してやるだけでそのユーザーのそのリクエストに限ってはグローバル変数として有効化される。一時的に5系と7系を併用するので後々消すという意味であまり意識の高い実装を行っていない。
 グローバル変数は何かと問題にもなるので検証後は全てを消して新クラスタにむけたAPIの修正をいれる予定。<br>
-このあたりは下記も読むと良い。別にRails触ったことない人でも読んだ方がいいと思う。<br>
+下記記事も参考に目を通しておいた。<br>
 <a href="https://techracho.bpsinc.jp/hachi8833/2017_08_01/43810">Railsの<code>CurrentAttributes</code>は有害である（翻訳）</a></p>
-<p>また、APIの修正に際して運用中のECアプリではElasticsearchはあらゆるロジックに影響を与えるため、バッチ処理においても同様の改修、追加を行った。基本的にRequestStoreを使用し、7系に向けたバッチなのか、5系に向けたバッチなのかを切り分けて対応した。<br>
+<p>また、APIの修正に際して運用中のECアプリではElasticsearchはあらゆるロジックに影響を与えるため、バッチ処理においても同様の改修・追加を行った。基本的にRequestStoreを使用し、7系に向けたバッチなのか5系に向けたバッチなのかを切り分けて対応した。<br>
 　　
 　　　　</p>
 <h2 id="テスト">~テスト~</h2>
-<p>既存のテストはkuromojiのアナライザを通った後に辞書、synonymファイルに定義した通りにアナライズされるかをテストするものだった。今回はアナライザを分けたので、</p>
+<p>既存のテストはkuromojiのアナライザを通った後に辞書ファイル・synonymファイルに定義した通りにアナライズされるかをテストするものだった。今回はアナライザを分けたので、</p>
 <ol>
 <li>synonymファイルに定義した単語の通りにアウトプットされて欲しいテスト</li>
 <li>辞書ファイルに定義した単語の世折にトークン化されることを確認するテスト</li>
@@ -342,8 +342,8 @@ RequestStoreの使用方法は以下<br>
 <p>以上の二つのテストに分割した。<br>
 　　</p>
 <h2 id="終わりに">終わりに</h2>
-<p>バックエンドの設計やインフラ力、検索エンジンの知識、辞書登録の運用など幅広く業務における力を試されるアップデートだったので非常に良い経験になったと思う。
-特にアナライザを分ける際や、辞書のリポジトリのテストを変更する場合、普段の作業者のタスクの精度にも影響が出る可能性があったのでドキュメントの整備やなるべく既存の運用と変わらないようにShellスクリプトで作業のラッパーを書いて自動化できる部分は自動化するなどサービス運用観点でも大きく学びがあった。
+<p>バックエンドの設計やインフラ力・検索エンジンの知識・辞書登録の運用など幅広く業務における力を試されるアップデートだったので非常に良い経験になった。
+特にアナライザを分ける際や辞書のリポジトリのテストを変更する場合、普段の作業者のタスクの精度にも影響が出る可能性があったのでドキュメントの整備やなるべく既存の運用と変わらないようにシェルスクリプトで作業のラッパーを書いて自動化できる部分は自動化するなどサービス運用観点でも大きく学びがあった。
 周りをよく見ることができるエンジニアでありたいので今後も視野広めでやっていくつもりです！！！！</p>
 
     </div>
