@@ -1,8 +1,9 @@
----
-title: "Elasticsearch 5.6.3を7.4に上げた"
-date: 2020-08-15T14:12:54+09:00
-draft: false
----
++++
+title =  "Elasticsearch 5.6.3を7.4に上げた"
+date = 2020-08-15T14:12:54+09:00
+draft = false
+images = ["images/thumbnail.png"]
++++
   
 最近検索に曖昧検索を入れたいとの声があり、ベクトル検索できるようにする必要があった。  
 ベクトル検索はElasticsearchの7.3系以上からのみ利用可能であり、既存が5系だったのでメジャーバージョンアップデートを行う必要があり、色々苦労した。 

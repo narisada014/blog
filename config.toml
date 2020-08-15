@@ -11,7 +11,7 @@ canonifyURLs = true
 [params]
 title = "ALL FREE"
 author = "Reishi Narisada"
-description = "It's my technical memo."
+description = "It is theoretically possible..."
 profilePicture = "images/profile.jpg"
 images = ["images/thumbnail.png"]
 mainSections = ["post"]
