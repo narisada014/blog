@@ -9,5 +9,5 @@ defaults:
     values:
       image:
         path: /static/images/profil.jpg
-        height: 630
-        width: 1200
+        height: 125
+        width: 125
