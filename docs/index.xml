@@ -6,10 +6,23 @@
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 13 Aug 2020 01:32:18 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 15 Aug 2020 14:12:54 +0900</lastBuildDate>
     
 	<atom:link href="https://narisada014.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Elasticsearch 5.6.3を7.4に上げた</title>
+      <link>https://narisada014.github.io/blog/post/elasticsearch_update/</link>
+      <pubDate>Sat, 15 Aug 2020 14:12:54 +0900</pubDate>
+      
+      <guid>https://narisada014.github.io/blog/post/elasticsearch_update/</guid>
+      <description>最近検索に曖昧検索を入れたいとの声があり、ベクトル検索できるようにする必要があった。
+ベクトル検索はElasticsearchの7.3系以上からのみ利用可能であり、既存が5系だったのでメジャーバージョンアップデートを行う必要があり、色々苦労した。
+環境 サーバサイド： Rails
+Elasticsearch：5.6.3 -&amp;gt; 7.4.2
+インフラ： EC2のクラスタ(Ansibleで生成)</description>
+    </item>
     
     <item>
       <title></title>
@@ -20,15 +33,6 @@
       <description>Language 業務レベル：Ruby, Python, Javascript
 習得中：C++, Rust, Go
 FrameWork Ruby on Rails, ServerlessFramework, Nuxt.</description>
-    </item>
-    
-    <item>
-      <title>Hugo導入</title>
-      <link>https://narisada014.github.io/blog/post/introduce-hugo/</link>
-      <pubDate>Thu, 13 Aug 2020 01:32:18 +0900</pubDate>
-      
-      <guid>https://narisada014.github.io/blog/post/introduce-hugo/</guid>
-      <description>WIP&amp;hellip; </description>
     </item>
     
   </channel>
