@@ -146,7 +146,7 @@ AWSのElasticsearchでは2020年の春まで個別でsynonymファイル、辞�
 このテストコードがシノニム定義ワードがトークン化される事件の影響を受けて落ちまくった。</p>
 </li>
 <li>
-<p>Elasticsearch7系でkuromojiのsearchモードで例外発生
+<p>Elasticsearch7系でkuromojiのsearchモードで例外発生<br>
 kuromojiはnormalモードとsearchモードとcustomモードがあり何かを設定する。<br>
 searchモードを指定すると辞書で定めたトークンに単語を分割するが、7系でsynonymファイルを読み込むとまさかの例外が発生するようになっていた。（地獄）<br>
 ver 7.9では改善される。<br>
@@ -294,10 +294,10 @@ analyzer: {
 <p>この変更でsynonymをkeywordとしてElasticsearchのドキュメントに登録できるようになった。<br>
 コメントにも書いたように、keywordタイプを指定した場合、html_stripがうまく効かなくなるので、自前で正規表現を使用して<!-- raw HTML omitted -->のようなhtmlタグを排除する仕組みを定義した。<br>
 また、synonymの読み込みをkuromojiから切り離したおかげで<code>mode: search</code>が使用可能になった。(結構たまたまなので大声で叫びましたw)</p>
-<p>このようにアナライザを修正したら次はmappingの修正が必要になる。<br>
+<p>このようにアナライザを修正したら次はmappingの修正とクエリの修正が必要になる。<br>
 今までは一つのアナライザで全て済んでいた。しかし、2つのアナライザを利用しなければならないため、Elasticsearchのmulti_matchクエリの<code>cross_field</code>を利用する必要がある。<br>
 cross_fieldについては下記のブログに助けられた。尚、こちらの方がElasticserachのIssueにも同様の内容を記載してくださっていたので参考にさせていただきました。<br>
-下記ブログ通りなのであまり言及しないが、multi matchクエリは以下のように使用した。<br>
+下記記事の通りなのでmappingもクエリについてもあまり言及しないが、multi matchクエリは以下のように使用した。<br>
 <a href="http://chie8842.hatenablog.com/entry/2019/09/29/124500">助けられたブログ</a></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">{
   query: {

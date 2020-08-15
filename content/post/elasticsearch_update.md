@@ -40,7 +40,7 @@ AWSのElasticsearchでは2020年の春まで個別でsynonymファイル、辞�
 
 
 
-4. Elasticsearch7系でkuromojiのsearchモードで例外発生
+4. Elasticsearch7系でkuromojiのsearchモードで例外発生  
 kuromojiはnormalモードとsearchモードとcustomモードがあり何かを設定する。  
 searchモードを指定すると辞書で定めたトークンに単語を分割するが、7系でsynonymファイルを読み込むとまさかの例外が発生するようになっていた。（地獄）  
 ver 7.9では改善される。  
@@ -205,10 +205,10 @@ analyzer: {
 コメントにも書いたように、keywordタイプを指定した場合、html_stripがうまく効かなくなるので、自前で正規表現を使用して<hogehoge>のようなhtmlタグを排除する仕組みを定義した。  
 また、synonymの読み込みをkuromojiから切り離したおかげで`mode: search`が使用可能になった。(結構たまたまなので大声で叫びましたw)  
 
-このようにアナライザを修正したら次はmappingの修正が必要になる。  
+このようにアナライザを修正したら次はmappingの修正とクエリの修正が必要になる。  
 今までは一つのアナライザで全て済んでいた。しかし、2つのアナライザを利用しなければならないため、Elasticsearchのmulti_matchクエリの`cross_field`を利用する必要がある。  
 cross_fieldについては下記のブログに助けられた。尚、こちらの方がElasticserachのIssueにも同様の内容を記載してくださっていたので参考にさせていただきました。  
-下記ブログ通りなのであまり言及しないが、multi matchクエリは以下のように使用した。  
+下記記事の通りなのでmappingもクエリについてもあまり言及しないが、multi matchクエリは以下のように使用した。  
 [助けられたブログ](http://chie8842.hatenablog.com/entry/2019/09/29/124500)  
 
 {{< highlight html >}}
