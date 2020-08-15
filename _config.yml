@@ -8,6 +8,6 @@ defaults:
       path: ""
     values:
       image:
-        path: /static/images/profil.jpg
+        path: /static/images/profile.jpg
         height: 125
         width: 125
