@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://narisada014.github.io/blog/sitemap.xml
+Sitemap: https://narisada014.github.iositemap.xml

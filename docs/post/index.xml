@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on </title>
-    <link>https://narisada014.github.io/blog/post/</link>
+    <link>https://narisada014.github.io/post/</link>
     <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 15 Aug 2020 14:12:54 +0900</lastBuildDate>
     
-	<atom:link href="https://narisada014.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://narisada014.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Elasticsearch 5.6.3を7.4にアップデートした</title>
-      <link>https://narisada014.github.io/blog/post/elasticsearch_update/</link>
+      <link>https://narisada014.github.io/post/elasticsearch_update/</link>
       <pubDate>Sat, 15 Aug 2020 14:12:54 +0900</pubDate>
       
-      <guid>https://narisada014.github.io/blog/post/elasticsearch_update/</guid>
+      <guid>https://narisada014.github.io/post/elasticsearch_update/</guid>
       <description>最近検索に曖昧検索を入れたいとの声があり、ベクトル検索できるようにする必要があった。
 ベクトル検索はElasticsearchの7.3以上からのみ利用可能で、既存が5系だったのでメジャーバージョンアップデートを行う必要があり色々苦労したのでメモとして残しておく。
 環境 サーバサイド： Rails
