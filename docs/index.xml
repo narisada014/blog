@@ -6,10 +6,17 @@
     <description>Recent content on ALL FREE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 15 Aug 2020 14:12:54 +0900</lastBuildDate>
-    
-	<atom:link href="https://narisada014.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 31 Dec 2020 16:21:44 +0900</lastBuildDate><atom:link href="https://narisada014.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2020振り返り</title>
+      <link>https://narisada014.github.io/post/my2020/</link>
+      <pubDate>Thu, 31 Dec 2020 16:21:44 +0900</pubDate>
+      
+      <guid>https://narisada014.github.io/post/my2020/</guid>
+      <description>今年結局全然更新してないですが、年末なのでまとめ。 スタートアップと大学院の両立はかなりの気合が必要なことがわかった一年でした。
+目次
+ ざっくり一年振り返り 今年読んで良かった本 各イベントに対する考察  ざっくり一年振り返り 1月   大学院の願書を出した</description>
+    </item>
     
     <item>
       <title>Elasticsearch 5.6.3を7.4にアップデートした</title>

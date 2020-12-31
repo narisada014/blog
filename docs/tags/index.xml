@@ -5,10 +5,6 @@
     <link>https://narisada014.github.io/tags/</link>
     <description>Recent content in Tags on ALL FREE</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja-jp</language>
-    
-	<atom:link href="https://narisada014.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>ja-jp</language><atom:link href="https://narisada014.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
