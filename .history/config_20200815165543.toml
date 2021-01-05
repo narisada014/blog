@@ -1,0 +1,61 @@
+baseURL = "https://narisada014.github.io/blog/"
+languageCode = "ja-jp"
+DefaultContentLanguage = "ja"
+theme = "anatole"
+summarylength = 10
+enableEmoji = true
+enableRobotsTXT = true
+publishDir = "docs"
+canonifyURLs = true
+
+[params]
+title = "ALL FREE"
+author = "Reishi Narisada"
+description = "Technical blog."
+profilePicture = "images/profile.jpg"
+images = ["images/thumbnail.png"]
+mainSections = ["post"]
+
+[menu]
+
+  [[menu.main]]
+  name = "Home"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
+  [[menu.main]]
+  name = "Posts"
+  weight = 200
+  identifier = "posts"
+  url = "/post/"
+  
+  [[menu.main]]
+  name = "About"
+  weight = 300
+  identifier = "about"
+  url = "/about/"
+
+[params.math]
+enable = true
+
+## Social links
+[[params.socialIcons]]
+icon = "fa-linkedin"
+title = "Linkedin"
+url = "https://www.linkedin.com/in/reishi-narisada-2597b0145/"
+
+[[params.socialIcons]]
+icon = "fa-github"
+title = "GitHub"
+url = "https://github.com/narisada014"
+
+[[params.socialIcons]]
+icon = "fa-twitter"
+title = "Twitter"
+url = "https://twitter.com/_ri_sa_da"
+
+[[params.socialIcons]]
+icon = "fa-envelope"
+title = "e-mail"
+url = "mailto:nari.reishi@gmail.com"
