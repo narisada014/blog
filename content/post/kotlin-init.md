@@ -9,7 +9,7 @@ draft = false
 Kotlinプログラミングを読んでInit周りのエクササイズが勉強になったのでメモ。
 
 以下クラスを定義しプリントする
-{{< highlight go "linenos=table,hl_lines=8 15-17,linenostart=1" >}}
+{{< highlight go "linenos=table,linenostart=1" >}}
 class Sword(_name: String) {
     var name = _name
         get() = "The Legendary $field"
@@ -22,20 +22,20 @@ println(sword.name)
 {{< / highlight >}}
 
 結果
-{{< highlight go "linenos=table,hl_lines=8 15-17,linenostart=1" >}}
+{{< highlight go "linenos=table,linenostart=1" >}}
 The Legendary Excalibur
 {{< / highlight >}}
 
 エクスカリバーが逆になってcapitalizeされると思いきやそうならない。
 続いて以下を実行。
 
-{{< highlight go "linenos=table,hl_lines=8 15-17,linenostart=1" >}}
+{{< highlight go "linenos=table,linenostart=1" >}}
 sword.name = "Gleipnir"
 println(sword.name)
 {{< / highlight >}}
 
 結果
-{{< highlight go "linenos=table,hl_lines=8 15-17,linenostart=1" >}}
+{{< highlight go "linenos=table,linenostart=1" >}}
 The Legendary Rinpielg
 {{< / highlight >}}
 
@@ -44,7 +44,7 @@ The Legendary Rinpielg
 二度目はインスタンスのプロパティにアクセスしたため setter が動作し, 入力した単語がリバースされた。
 
 このクラスの初期化, 初期化以降も確実に setter を通すためには以下のようにコードを修正する必要がある。
-{{< highlight go "linenos=table,hl_lines=8 15-17,linenostart=1" >}}
+{{< highlight go "linenos=table,linenostart=1" >}}
 class Sword(_name: String) {
     var name = _name
         get() = "The Legendary $field"
