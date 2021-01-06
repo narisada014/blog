@@ -169,7 +169,7 @@ println(<span style="color:#a6e22e">sword</span>.<span style="color:#a6e22e">nam
 </div></p>
 <p>今回は逆になって出力された。
 以上からクラスのインスタンス化では value が null なので setter が動作しない。
-二度目はインスタンスのプロパティにアクセスしたため setter が動作し, 入力した単語がリバースされた。</p>
+二度目はインスタンスのプロパティにアクセスしたため(name_field に直アクセスしたため) setter が動作し, 入力した単語がリバースされた。</p>
 <p>このクラスの初期化, 初期化以降も確実に setter を通すためには以下のようにコードを修正する必要がある。
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -205,8 +205,8 @@ println(<span style="color:#a6e22e">sword</span>.<span style="color:#a6e22e">nam
 =&gt; <span style="color:#a6e22e">The</span> <span style="color:#a6e22e">Legendary</span> <span style="color:#a6e22e">Rubilacxe</span></code></pre></td></tr></table>
 </div>
 </div></p>
-<p>initはクラスの初期化の際に必ず呼び出されるので value の中に値が入った状態で setter が呼び出され、確実に処理を通すことが可能になる。</p>
-<p>と、思う笑</p>
+<p>name プロパティに直アクセスする場合, value に直接値が渡されるため setter が起動するが, インスタンス化の場合は_nameが使用されるため name_field が元で動く setter は起動しない。</p>
+<p>だと、思う笑</p>
 <p>いや、あってるはずなんだけどな&hellip;.</p>
 <p>Kotlin は IDE の補完が強くて書いていて気持ちいいなと思うのでどんどんやっていきたい。
 何か手頃な OSS ないかな〜〜</p>

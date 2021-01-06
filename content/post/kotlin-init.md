@@ -41,7 +41,7 @@ The Legendary Rinpielg
 
 今回は逆になって出力された。
 以上からクラスのインスタンス化では value が null なので setter が動作しない。
-二度目はインスタンスのプロパティにアクセスしたため setter が動作し, 入力した単語がリバースされた。
+二度目はインスタンスのプロパティにアクセスしたため(name_field に直アクセスしたため) setter が動作し, 入力した単語がリバースされた。
 
 このクラスの初期化, 初期化以降も確実に setter を通すためには以下のようにコードを修正する必要がある。
 {{< highlight go "linenos=table,linenostart=1" >}}
@@ -61,9 +61,9 @@ println(sword.name)
 => The Legendary Rubilacxe
 {{< / highlight >}}
 
-initはクラスの初期化の際に必ず呼び出されるので value の中に値が入った状態で setter が呼び出され、確実に処理を通すことが可能になる。
+name プロパティに直アクセスする場合, value に直接値が渡されるため setter が起動するが, インスタンス化の場合は_nameが使用されるため name_field が元で動く setter は起動しない。
 
-と、思う笑
+だと、思う笑
 
 いや、あってるはずなんだけどな....
 
